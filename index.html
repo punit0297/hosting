@@ -103,7 +103,7 @@
         .glass-card:hover { transform: translateY(-5px); border-color: rgba(255, 215, 0, 0.3); background: var(--surface-hover); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
         /* --- PLANS TOGGLE SWITCH --- */
-        .plan-toggle-container { display: inline-flex; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 6px; border-radius: 30px; margin-bottom: 50px; gap: 5px; }
+        .plan-toggle-container { display: inline-flex; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 6px; border-radius: 30px; margin-bottom: 50px; gap: 5px; flex-wrap: wrap; justify-content: center;}
         .toggle-tab { padding: 10px 24px; border-radius: 25px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.3s; color: var(--text-muted); }
         .toggle-tab.active { background: var(--primary); color: #000; box-shadow: 0 4px 15px var(--primary-glow); }
         .plans-panel { display: none; width: 100%; }
@@ -155,7 +155,7 @@
         .platform-item.active .platform-text h4 { color: var(--primary); }
         .platform-text p { font-size: 0.8rem; color: var(--text-muted); }
 
-        .dashboard-mockup { flex: 1; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); min-height: 500px; }
+        .dashboard-mockup { flex: 1; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); min-height: 500px; }
         .dash-header { padding: 15px 20px; border-bottom: 1px solid var(--panel-border); display: flex; align-items: center; gap: 20px; }
         .mac-dots { display: flex; gap: 8px; }
         .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -722,8 +722,8 @@
                 <p class="subtitle" style="margin: 0 auto 30px auto;">Choose between hardware tiers matched directly to your performance needs. All servers located in 🇮🇳 India.</p>
                 
                 <div class="plan-toggle-container">
-                    <div class="toggle-tab active" onclick="switchPlanTab('game-budget', 'game-perf', this)">Intel Budget Tiers</div>
-                    <div class="toggle-tab" onclick="switchPlanTab('game-perf', 'game-budget', this)">AMD EPYC Performance</div>
+                    <div class="toggle-tab active" onclick="switchPlanTab('game-budget', this)">Intel Budget Tiers</div>
+                    <div class="toggle-tab" onclick="switchPlanTab('game-perf', this)">AMD EPYC Performance</div>
                 </div>
             </div>
 
@@ -731,7 +731,7 @@
             <div class="grid plans-panel active" id="game-budget">
                 <div class="glass-card">
                     <h3>Starter • 2GB</h3>
-                    <div class="price-tag">₹99 <span>/mo</span></div>
+                    <div class="price-tag">₹69 <span>/mo</span></div>
                     <ul class="plan-features">
                         <li>100% CPU (Intel Xeon)</li>
                         <li>2GB DDR4 RAM</li>
@@ -744,7 +744,7 @@
                 </div>
                 <div class="glass-card">
                     <h3>Basic • 4GB</h3>
-                    <div class="price-tag">₹199 <span>/mo</span></div>
+                    <div class="price-tag">₹139 <span>/mo</span></div>
                     <ul class="plan-features">
                         <li>200% CPU (Intel Xeon)</li>
                         <li>4GB DDR4 RAM</li>
@@ -757,7 +757,7 @@
                 </div>
                 <div class="glass-card" style="border-color: var(--primary);">
                     <h3>Advanced • 6GB</h3>
-                    <div class="price-tag">₹299 <span>/mo</span></div>
+                    <div class="price-tag">₹209 <span>/mo</span></div>
                     <ul class="plan-features">
                         <li>300% CPU (Intel Xeon)</li>
                         <li>6GB DDR4 RAM</li>
@@ -770,7 +770,7 @@
                 </div>
                 <div class="glass-card">
                     <h3>Premium • 8GB</h3>
-                    <div class="price-tag">₹399 <span>/mo</span></div>
+                    <div class="price-tag">₹279 <span>/mo</span></div>
                     <ul class="plan-features">
                         <li>400% CPU (Intel Xeon)</li>
                         <li>8GB DDR4 RAM</li>
@@ -783,7 +783,7 @@
                 </div>
                 <div class="glass-card">
                     <h3>Elite • 12GB</h3>
-                    <div class="price-tag">₹599 <span>/mo</span></div>
+                    <div class="price-tag">₹419 <span>/mo</span></div>
                     <ul class="plan-features">
                         <li>600% CPU (Intel Xeon)</li>
                         <li>12GB DDR4 RAM</li>
@@ -796,7 +796,7 @@
                 </div>
                 <div class="glass-card">
                     <h3>Infinity • 16GB</h3>
-                    <div class="price-tag">₹799 <span>/mo</span></div>
+                    <div class="price-tag">₹559 <span>/mo</span></div>
                     <ul class="plan-features">
                         <li>800% CPU (Intel Xeon)</li>
                         <li>16GB DDR4 RAM</li>
@@ -899,68 +899,105 @@
                 <p class="subtitle" style="margin: 0 auto 30px auto;">Root virtualization with scalable KVM structures. 🇮🇳 India Location.</p>
                 
                 <div class="plan-toggle-container">
-                    <div class="toggle-tab active" onclick="switchPlanTab('vps-budget', 'vps-perf', this)">Intel Budget VPS</div>
-                    <div class="toggle-tab" onclick="switchPlanTab('vps-perf', 'vps-budget', this)">AMD EPYC Performance</div>
+                    <div class="toggle-tab active" onclick="switchPlanTab('vps-budget', this)">Budget VPS</div>
+                    <div class="toggle-tab" onclick="switchPlanTab('vps-premium', this)">Premium VPS</div>
+                    <div class="toggle-tab" onclick="switchPlanTab('vps-perf', this)">Performance VPS</div>
                 </div>
             </div>
 
-            <!-- VPS: Budget Panels (Intel) -->
+            <!-- VPS: Budget Series -->
             <div class="grid plans-panel active" id="vps-budget">
                 <div class="glass-card">
-                    <h3>VPS Core</h3>
-                    <div class="price-tag">₹799 <span>/mo</span></div>
+                    <h3>VPS Starter</h3>
+                    <div class="price-tag">₹719 <span>/mo</span></div>
                     <ul class="plan-features">
-                        <li>4 vCore CPU</li>
-                        <li>8GB DDR4 RAM</li>
-                        <li>50GB NVMe Storage</li>
-                        <li>Intel Xeon E5 v4/v3</li>
-                        <li>1x Dedicated IPv4</li>
-                        <li>1Gbps Uplink (Unmetered)</li>
+                        <li>8 vCPU (Xeon E5 v4)</li>
+                        <li>16GB DDR4 RAM</li>
+                        <li>200GB Disk Storage</li>
+                        <li>22TB Bandwidth @ 5Gbps</li>
+                        <li>Full Root Access ✅</li>
                     </ul>
                     <button class="btn btn-outline" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
                 </div>
                 <div class="glass-card" style="border-color: var(--primary);">
                     <h3>VPS Pro</h3>
-                    <div class="price-tag">₹1199 <span>/mo</span></div>
+                    <div class="price-tag">₹1080 <span>/mo</span></div>
                     <ul class="plan-features">
-                        <li>6 vCore CPU</li>
-                        <li>16GB DDR4 RAM</li>
-                        <li>90GB NVMe Storage</li>
-                        <li>Intel Xeon E5 v4/v3</li>
-                        <li>1x Dedicated IPv4</li>
-                        <li>1Gbps Uplink (Unmetered)</li>
+                        <li>12 vCPU (Xeon E5 v4)</li>
+                        <li>32GB DDR4 RAM</li>
+                        <li>320GB Disk Storage</li>
+                        <li>23TB Bandwidth @ 5Gbps</li>
+                        <li>Full Root Access ✅</li>
                     </ul>
                     <button class="btn btn-primary" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
                 </div>
                 <div class="glass-card">
                     <h3>VPS Elite</h3>
-                    <div class="price-tag">₹1999 <span>/mo</span></div>
+                    <div class="price-tag">₹1500 <span>/mo</span></div>
                     <ul class="plan-features">
-                        <li>12 vCore CPU</li>
-                        <li>32GB DDR4 RAM</li>
-                        <li>90GB NVMe Storage</li>
-                        <li>Intel Xeon E5 v4/v3</li>
-                        <li>1x Dedicated IPv4</li>
-                        <li>1Gbps Uplink (Unmetered)</li>
+                        <li>16 vCPU (Xeon E5 v4)</li>
+                        <li>48GB DDR4 RAM</li>
+                        <li>512GB Disk Storage</li>
+                        <li>24TB Bandwidth @ 5Gbps</li>
+                        <li>Full Root Access ✅</li>
                     </ul>
                     <button class="btn btn-outline" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
                 </div>
                 <div class="glass-card">
                     <h3>VPS Max</h3>
-                    <div class="price-tag">₹3799 <span>/mo</span></div>
+                    <div class="price-tag">₹1800 <span>/mo</span></div>
                     <ul class="plan-features">
-                        <li>18 vCore CPU</li>
+                        <li>24 vCPU (Xeon E5 v4)</li>
                         <li>64GB DDR4 RAM</li>
-                        <li>256GB NVMe Storage</li>
-                        <li>Intel Xeon E5 v4/v3</li>
-                        <li>1x Dedicated IPv4</li>
-                        <li>1Gbps Uplink (Unmetered)</li>
+                        <li>600GB Disk Storage</li>
+                        <li>25TB Bandwidth @ 5Gbps</li>
+                        <li>Full Root Access ✅</li>
                     </ul>
                     <button class="btn btn-outline" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
                 </div>
             </div>
 
-            <!-- VPS: Performance Panels (AMD) -->
+            <!-- VPS: Premium Series -->
+            <div class="grid plans-panel" id="vps-premium">
+                <div class="glass-card">
+                    <h3>Platinum Starter</h3>
+                    <div class="price-tag">₹959 <span>/mo</span></div>
+                    <ul class="plan-features">
+                        <li>16 vCPU (Xeon Platinum)</li>
+                        <li>16GB DDR4 RAM</li>
+                        <li>200GB NVMe/SAS</li>
+                        <li>30TB Bandwidth @ 5Gbps</li>
+                        <li>Full Root Access ✅</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
+                </div>
+                <div class="glass-card" style="border-color: var(--primary);">
+                    <h3>Platinum Pro</h3>
+                    <div class="price-tag">₹1799 <span>/mo</span></div>
+                    <ul class="plan-features">
+                        <li>24 vCPU (Xeon Platinum)</li>
+                        <li>32GB DDR4 RAM</li>
+                        <li>320GB NVMe/SAS</li>
+                        <li>31TB Bandwidth @ 5Gbps</li>
+                        <li>Full Root Access ✅</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
+                </div>
+                <div class="glass-card">
+                    <h3>Platinum Elite</h3>
+                    <div class="price-tag">₹2280 <span>/mo</span></div>
+                    <ul class="plan-features">
+                        <li>32 vCPU (Xeon Platinum)</li>
+                        <li>64GB DDR4 RAM</li>
+                        <li>512GB NVMe/SAS</li>
+                        <li>32TB Bandwidth @ 5Gbps</li>
+                        <li>Full Root Access ✅</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
+                </div>
+            </div>
+
+            <!-- VPS: Performance Series (AMD) -->
             <div class="grid plans-panel" id="vps-perf">
                 <div class="glass-card">
                     <h3>Starter EPYC</h3>
@@ -989,7 +1026,7 @@
                     <button class="btn btn-outline" style="width: 100%;" onclick="navigateTo('order')">Deploy Server</button>
                 </div>
                 <div class="glass-card">
-                    <h3>Performance (9354P)</h3>
+                    <h3>Performance</h3>
                     <div class="price-tag">₹3300 <span>/mo</span></div>
                     <ul class="plan-features">
                         <li>8 vCPU @ 3.75GHz Turbo</li>
@@ -1215,13 +1252,21 @@
 
     <!-- JS Scripts -->
     <script>
-        // --- Tab pricing dynamic switch logic ---
-        function switchPlanTab(showId, hideId, element) {
+        // --- Updated Tab pricing dynamic switch logic to support multiple tabs easily ---
+        function switchPlanTab(showId, element) {
+            // Remove active class from all sibling toggle tabs
             const tabs = element.parentElement.querySelectorAll('.toggle-tab');
             tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked tab
             element.classList.add('active');
             
-            document.getElementById(hideId).classList.remove('active');
+            // Find the closest section container and hide all plan panels inside it
+            const section = element.closest('.section');
+            const panels = section.querySelectorAll('.plans-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+            
+            // Show the target panel
             document.getElementById(showId).classList.add('active');
         }
 
